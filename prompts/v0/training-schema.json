@@ -1,0 +1,98 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://yourdomain.com/schemas/v1/training-schema.json",
+    "version": "1.0.0",
+    "type": "object",
+    "description": "Schema for tracking cycling training data, including workout history, recovery metrics, and planned sessions.",
+    "properties": {
+      "context": {
+        "type": "object",
+        "description": "Contextual information about the current training phase and upcoming race.",
+        "properties": {
+          "TodaysDate": { "type": "string", "format": "date", "description": "Current date in YYYY-MM-DD format." },
+          "periodization": { "type": "string", "description": "Current training phase (Base, Build, Peak, etc.)." },
+          "trainingBlockWeek": { "type": "string", "description": "Current training block week and details." },
+          "upcomingRace": {
+            "type": "object",
+            "description": "Details of the next scheduled race.",
+            "properties": {
+              "name": { "type": "string", "description": "Name and description of the upcoming race." },
+              "date": { "type": "string", "format": "date", "description": "Race date in YYYY-MM-DD format." },
+              "priority": { "type": "string", "enum": ["A", "B", "C"], "description": "Priority level of the race (A = most important)." }
+            },
+            "required": ["name", "date", "priority"]
+          }
+        },
+        "required": ["TodaysDate", "periodization", "trainingBlockWeek", "upcomingRace"]
+      },
+      "recentWorkouts": {
+        "type": "object",
+        "description": "Recent workout data from Strava or other sources.",
+        "properties": {
+          "stravaData": {
+            "type": "object",
+            "properties": {
+              "lastWorkout": {
+                "type": "object",
+                "description": "Details of the most recent workout.",
+                "properties": {
+                  "date": { "type": "string", "format": "date", "description": "Workout date in YYYY-MM-DD format." },
+                  "type": { "type": "string", "description": "Type of workout (e.g., Zone 4 Interval)." },
+                  "durationOrDistance": { "type": "string", "description": "Duration or distance of the workout." },
+                  "averagePowerOrHR": { "type": "string", "description": "Average power or heart rate recorded." },
+                  "rpe": { "type": "string", "description": "Rate of Perceived Exertion (1-10 scale)." },
+                  "notes": { "type": "string", "description": "Additional notes about the workout." }
+                },
+                "required": ["date", "type", "durationOrDistance", "averagePowerOrHR", "rpe", "notes"]
+              }
+            },
+            "required": ["lastWorkout"]
+          }
+        },
+        "required": ["stravaData"]
+      },
+      "whoopData": {
+        "type": "object",
+        "description": "Recovery metrics from Whoop or other health tracking sources.",
+        "properties": {
+          "sleep": {
+            "type": "object",
+            "description": "Sleep data including duration and quality score.",
+            "properties": {
+              "hours": { "type": "string", "description": "Total sleep hours in HH:MM format." },
+              "qualityOrScore": { "type": "string", "description": "Sleep quality score on a 0-1 scale." }
+            },
+            "required": ["hours", "qualityOrScore"]
+          },
+          "hrv": {
+            "type": "object",
+            "description": "Heart rate variability (HRV) data.",
+            "properties": {
+              "today": { "type": "string", "description": "Current day's HRV reading." },
+              "baseline": { "type": "string", "description": "Average baseline HRV." }
+            },
+            "required": ["today", "baseline"]
+          },
+          "restingHeartRate": {
+            "type": "object",
+            "description": "Resting heart rate (RHR) data.",
+            "properties": {
+              "today": { "type": "string", "description": "Current day's resting heart rate." },
+              "baseline": { "type": "string", "description": "Baseline resting heart rate." }
+            },
+            "required": ["today", "baseline"]
+          },
+          "recoveryScore": { "type": "string", "description": "Daily recovery score (0-1 scale)." },
+          "moodOrStress": { "type": "string", "description": "Subjective mood or stress level." }
+        },
+        "required": ["sleep", "hrv", "restingHeartRate", "recoveryScore", "moodOrStress"]
+      },
+      "extensions": {
+        "type": "object",
+        "description": "Reserved for future fields or additional custom data.",
+        "additionalProperties": true
+      }
+    },
+    "required": ["context", "recentWorkouts", "whoopData"]
+  }
+  
