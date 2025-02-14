@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://yourdomain.com/schemas/v1/training-schema.json",
-    "version": "1.0.0",
+    "$id": "https://raw.githubusercontent.com/ianphil/WattsWiseSchemas/refs/heads/master/prompts/v0/next-day-plan.schema.json",
+    "version": "0.1.0",
     "type": "object",
     "description": "Schema for tracking cycling training data, including workout history, recovery metrics, and planned sessions.",
     "properties": {

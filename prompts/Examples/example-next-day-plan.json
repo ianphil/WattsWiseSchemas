@@ -1,0 +1,64 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ianphil/WattsWiseSchemas/refs/heads/master/prompts/v0/next-day-plan.schema.json",
+  "context": {
+    "TodaysDate": "2025-01-31",
+    "periodization": "Base",
+    "trainingBlockWeek": "Recovery week 4, day 5 rest day",
+    "upcomingRace": {
+      "name": "Currahee Gravel 24 miles 3000ft of climbing",
+      "date": "2025-05-31",
+      "priority": "A"
+    }
+  },
+  "recentWorkouts": {
+    "stravaData": {
+      "lastWorkout": {
+        "date": "2025-01-30",
+        "type": "Zone 4 Interval",
+        "durationOrDistance": "1 hour",
+        "averagePowerOrHR": "205w",
+        "rpe": "5",
+        "notes": "Indoor"
+      }
+    }
+  },
+  "whoopData": {
+    "sleep": {
+      "hours": "7:31",
+      "qualityOrScore": ".75"
+    },
+    "hrv": {
+      "today": "52",
+      "baseline": "58"
+    },
+    "restingHeartRate": {
+      "today": "48",
+      "baseline": "46"
+    },
+    "recoveryScore": ".54",
+    "moodOrStress": "normal"
+  },
+  "todaysPlannedWorkout": {
+    "date": "2025-01-31",
+    "type": "Rest day",
+    "focus": "recovery",
+    "details": "no planned activity"
+  },
+  "nextPlannedWorkout": {
+    "date": "2025-02-01",
+    "type": "Zone 2 for 3 hours",
+    "focus": "base miles",
+    "details": "10 min warmup, 10min z2, 20 sec z5 interval for 2 hours 40 min, 10 min cool down"
+  },
+  "questionsAndDesiredOutput": {
+    "statusCheck": "Summarize how I’m doing vs. my usual HRV, RHR, and subjective energy/mood baselines. Identify any warning signs of overtraining or under-recovery.",
+    "workoutAdaptation": "Based on the data, should I proceed, reduce intensity/volume, or switch to an easier ride/rest? Provide rationale.",
+    "recommendations": "Suggest any nutritional, hydration, or additional recovery strategies (e.g., more sleep, foam rolling). Also advise how to adjust the rest of the week’s plan if I’m fatigued or feeling good.",
+    "motivationAndNextSteps": "Give a concise plan for today’s ride, plus a short motivational note to keep me aligned with my goals."
+  },
+  "formatOfResponse": {
+    "analysis": "Green, Yellow, or Red light regarding current recovery status",
+    "plan": "Clear recommendation for today’s workout (duration, intensity, intervals), any changes for upcoming days",
+    "tips": "Fueling, hydration, or mental prep insights"
+  }
+}
